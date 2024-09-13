@@ -1,0 +1,58 @@
+{
+  "specVersion": "1.0",
+  "supervisorSpec": {
+    "supervisorName": "lf-tdd-supervisor"
+  },
+  "envSpec": {
+    "vcenterDetails": {
+      "vcenterAddress": "vcenter-mgmt.vcf.sddc.lab",
+      "vcenterCluster": "mgmt-cluster-01"
+    }
+  },
+  "tkgsComponentSpec": {
+    "tkgsStoragePolicySpec": {
+      "masterStoragePolicy": "vsan-tanzu-storage",
+      "imageStoragePolicy": "vsan-tanzu-storage",
+      "ephemeralStoragePolicy": "vsan-tanzu-storage"
+    },
+    "tkgsMgmtNetworkSpec": {
+      "tkgsMgmtNetworkName": "sddc-vds01-vmmgmt",
+      "tkgsMgmtIpAssignmentMode": "STATICRANGE",
+      "tkgsMgmtNetworkStartingIp": "10.0.11.180",
+      "tkgsMgmtNetworkGatewayCidr": "10.0.11.253/24",
+      "tkgsMgmtNetworkDnsServers": [
+        "10.0.0.253"
+      ],
+      "tkgsMgmtNetworkSearchDomains": [
+        "vcf.sddc.lab"
+      ],
+      "tkgsMgmtNetworkNtpServers": [
+        "10.0.0.253"
+      ]
+    },
+    "tkgsNcpClusterNetworkInfo": {
+      "tkgsClusterDistributedSwitch": "mgmt-vds01",
+      "tkgsNsxEdgeCluster": "EC-01",
+      "tkgsNsxTier0Gateway": "4693e4af-50c7-47a9-95a4-35e43015f05d",
+      "tkgsNamespaceSubnetPrefix": 28,
+      "tkgsRoutedMode": false,
+      "tkgsNamespaceNetworkCidrs": [
+        "10.244.0.0/20"
+      ],
+      "tkgsIngressCidrs": [
+        "10.80.0.0/24"
+      ],
+      "tkgsEgressCidrs": [
+        "10.70.0.0/24"
+      ],
+      "tkgsWorkloadDnsServers": [
+        "10.0.0.253"
+      ],
+      "tkgsWorkloadServiceCidr": "10.96.0.0/23"
+    },
+    "apiServerDnsNames": [
+      "kubeapi.vcf.sddc.lab"
+    ],
+    "controlPlaneSize": "SMALL"
+  }
+}
