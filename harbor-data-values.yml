@@ -1,5 +1,5 @@
 #! The FQDN for accessing Harbor admin UI and Registry service.
-hostname: yourdomain.com
+hostname: harbor.vcf.holo.lab
 #! The network port of the Envoy service in Contour or other Ingress Controller.
 port:
   https: 443
@@ -9,7 +9,7 @@ tlsCertificate:
   tlsSecretLabels: {"managed-by": "vmware-vRegistry"}
 
 #! [Required] The initial password of Harbor admin.
-harborAdminPassword: Harbor12345
+harborAdminPassword: VMware1!
 
 #! [Required] The secret key used for encryption. Must be a string of 16 chars.
 secretKey: 0123456789ABCDEF
@@ -55,32 +55,32 @@ persistence:
       #! Specify the "storageClass" used to provision the volume. Or the default
       #! StorageClass will be used(the default).
       #! Set it to "-" to disable dynamic provisioning
-      storageClass: "insert-storage-class-name-here"
+      storageClass: "vsan-tanzu-storage"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 10Gi
     jobservice:
       jobLog:
         existingClaim: ""
-        storageClass: "insert-storage-class-name-here"
+        storageClass: "vsan-tanzu-storage"
         subPath: ""
         accessMode: ReadWriteOnce
         size: 1Gi
     database:
       existingClaim: ""
-      storageClass: "insert-storage-class-name-here"
+      storageClass: "vsan-tanzu-storage"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 1Gi
     redis:
       existingClaim: ""
-      storageClass: "insert-storage-class-name-here"
+      storageClass: "vsan-tanzu-storage"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 1Gi
     trivy:
       existingClaim: ""
-      storageClass: "insert-storage-class-name-here"
+      storageClass: "vsan-tanzu-storage"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 5Gi
