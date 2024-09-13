@@ -1,0 +1,22 @@
+# ====================================================================================
+#                    Livefire TDD DevReady 2024                    
+#                                                                                    
+#            You must have enabled SSO AD integration with vcf.holo.lab 
+#              in order to provision this cluster role
+#                                                                                    
+#                   by Konstantin Nikolov, Livefire Team                    
+# ====================================================================================
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: CHANGE_IT         #rolebind-cluster-group-devs
+  namespace: CHANGE_IT    #dev-ns
+roleRef:
+  kind: ClusterRole
+  name: CHANGE_IT         #edit
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: User
+  name: CHANGE_IT         #sso:gg-kube-devs@vcf.holo.lab
+  apiGroup: rbac.authorization.k8s.io

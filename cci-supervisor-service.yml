@@ -1,0 +1,33 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: cci-service.fling.vsphere.vmware.com.1.0.0
+spec:
+  refName: cci-service.fling.vsphere.vmware.com
+  version: 1.0.0
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: projects.packages.broadcom.com/vcf_cci_service/cci-supervisor-service-package:v1.0.0
+      template:
+      - ytt:
+          paths:
+          - config/
+          ignoreUnknownComments: true
+      - kbld:
+          paths:
+          - '-'
+          - .imgpkg/images.yml
+      deploy:
+      - kapp: {}
+---
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: PackageMetadata
+metadata:
+  name: cci-service.fling.vsphere.vmware.com
+spec:
+  displayName: Consumption Interface
+  shortDescription: Provides the Local Consumption Interface (LCI) for Namespaces within vSphere Client. This also includes the Single Sign On (SSO) component required by the Cloud Consumption Interface (CCI) in Aria Automation within VMware Cloud Foundation.
+  longDescription: Provides the Local Consumption Interface (LCI) for Namespaces within vSphere Client. This also includes the Single Sign On (SSO) component required by the Cloud Consumption Interface (CCI) in Aria Automation within VMware Cloud Foundation.
+  providerName: VMware
