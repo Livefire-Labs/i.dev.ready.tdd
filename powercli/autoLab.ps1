@@ -52,7 +52,6 @@ New-TagAssignment -Tag $tagName -Entity "vcf-vsan"
 Add-StoragePolicy -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -PolicyName $spbmPolicyName -TagName $tagName
 
 
-
 # ====================================================================================
 #  Create and Configure Namespace
 # ====================================================================================
