@@ -111,7 +111,6 @@ $certificateTemplate = "VMware"
 
 # Tanzu Namespace Settings
 $wmNamespaceName = "vlc-m01-ns01"
-$spbmPolicyName = "vsphere-with-tanzu-storage-policy"
 $domainFqdn = "vcf.holo.lab"
 $domainBindUser = "svc-vsphere-ad"
 $domainBindPass = "VMware123!"

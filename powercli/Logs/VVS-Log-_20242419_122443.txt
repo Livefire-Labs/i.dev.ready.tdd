@@ -1,6 +1,0 @@
-12:24:43 :> Deploying the Developer Ready Infrastructure on VCF.  Brought to you by the letters L and F, and by the number 42
-12:24:43 :> Create the variables needed to deploy the Developer Ready Infrastructure
-12:24:43 :> Create the Datastore Tag
-12:24:49 :> Create the Tanzu Storage Policy
-12:24:53 :> Deploy the Tanzu Supervisor Cluster
-12:24:54 :> Replace the default certificate with a signed one for the Enterprise CA
