@@ -1,0 +1,5 @@
+01:04:32 :> Deploying the Developer Ready Infrastructure on VCF.  Brought to you by the letters L and F, and by the number 42
+01:04:32 :> Create the variables needed to deploy the Developer Ready Infrastructure
+01:04:32 :> Create the Datastore Tag
+01:04:35 :> Create the Tanzu Storage Policy
+01:04:40 :> Deploy the Tanzu Supervisor Cluster
