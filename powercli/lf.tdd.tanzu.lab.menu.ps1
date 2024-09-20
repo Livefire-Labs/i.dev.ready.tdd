@@ -151,6 +151,7 @@ do
 
            } '5' {
 
+
                 cls
                #  Write-Host "Add a Contour Supervisor Service to Supervisor"
                #  Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\contour.yml -configureYaml ..\contour-data-values.yml
