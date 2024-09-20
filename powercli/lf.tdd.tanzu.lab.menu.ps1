@@ -93,6 +93,7 @@ $wmNamespaceViewUserGroup = "gg-kub-readonly"
 
 $vmClassSmall = "best-effort-small"
 $vmClassMedium = "best-effort-medium"
+wmClusterName = "lf-tdd-supervisor"
 
 function Show-Menu
 {
