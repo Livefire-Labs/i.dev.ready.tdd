@@ -99,7 +99,7 @@ $wmClusterName = "mgmt-cluster-01"  #vCenter Cluster Name where Supervisor Runs 
 function Show-Menu
 {
      param (
-           [string]$Title = 'My Menu'
+           [string]$Title = 'LF DEV READY DEPLOYMENT'
      )
      cls
      Write-Host “================ $Title ================”
@@ -108,6 +108,7 @@ function Show-Menu
      Write-Host “2: Press '2' to deploy Supervisor Cluster.”
      Write-Host “3: Press '3' To add Certificate top Supervisor.”
      Write-Host “4: Press '4' to Create and Configure Namespace.”
+     Write-Host “5: Press '5' to Create and Configure Namespace.”
      Write-Host “Q: Press 'Q' to quit.”
 }
 
@@ -144,9 +145,23 @@ do
                 Add-NamespacePermission -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -sddcDomain $sddcDomainName -domain $domainFqdn -domainBindUser $domainBindUser -domainBindPass $domainBindPass -namespace $wmNamespaceName -principal $wmNamespaceEditUserGroup -role edit -type group
                 Add-NamespacePermission -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -sddcDomain $sddcDomainName -domain $domainFqdn -domainBindUser $domainBindUser -domainBindPass $domainBindPass -namespace $wmNamespaceName -principal $wmNamespaceViewUserGroup -role view -type group
                 
-                Write-Host "Add TKGS Cluster Class to Namespace"11
+                Write-Host "Add TKGS Cluster Class to Namespace"
                 Add-NamespaceVmClass -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Namespace $wmNamespaceName -VMClass $vmClassSmall
                 Add-NamespaceVmClass -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Namespace $wmNamespaceName -VMClass $vmClassMedium
+
+           } '5' {
+
+                cls
+               #  Write-Host "Add a Contour Supervisor Service to Supervisor"
+               #  Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\contour.yml -configureYaml ..\contour-data-values.yml
+               #  Write-Host "Add a External DNS Supervisor Service to Supervisor"
+               #  Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\external-dns.yml -configureYaml ..\external-dns-data-values.yml
+               #  Write-Host "Add a Harbor Supervisor Service to Supervisor"
+               #  Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\harbor.yml -configureYaml ..\harbor-data-values.yml
+                Write-Host "Add a CCI Supervisor Service to Supervisor"
+                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\cci-supervisor-service.yml -configureYaml ..\cci-supervisor-service-empty.yml
+
+
 
               } 'q' {
                 return
