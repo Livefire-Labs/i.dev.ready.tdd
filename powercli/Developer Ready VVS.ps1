@@ -85,7 +85,7 @@ $wmClusterInput = @{
 	masterStoragePolicy = "vsan-tanzu-storage"
 	nsxEdgeCluster = "EC-01"
 	distributedSwitch = "mgmt-vds01"
-	podCIDRs = "100.100.0.0/20"
+	podCIDRs = "10.244.0.0/20"
 	serviceCIDR = "10.96.0.0/23"
 	externalIngressCIDRs = "10.80.0.0/24"
 	externalEgressCIDRs = "10.70.0.0/24"
@@ -144,8 +144,8 @@ Add-StoragePolicy -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcMan
 #Add-ContentLibrary -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -ContentLibraryName $contentLibraryName -SubscriptionUrl "https://wp-content.vmware.com/v2/latest/lib.json"
 
 # Deploy Tanzu Supervisor Control Plane
-logger "Deploy the Tanzu Supervisor Cluster"
-Enable-SupervisorCluster @wmClusterInput 
+# logger "Deploy the Tanzu Supervisor Cluster"
+# Enable-SupervisorCluster @wmClusterInput 
 
 # # Create Tanzu Supervisor Control Plane Certificate
 # logger "Replace the default certificate with a signed one for the Enterprise CA"
