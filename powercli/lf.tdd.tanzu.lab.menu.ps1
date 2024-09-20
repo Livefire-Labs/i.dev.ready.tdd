@@ -82,18 +82,18 @@ $caUserPass = "VMware123!"
 $certificateTemplate = "VMware"
 
 # Tanzu Namespace Settings
-$wmNamespaceName = "vlc-m01-ns01"
+$wmNamespaceName = "lf-tdd-namespace"
 $domainFqdn = "vcf.holo.lab"
 $domainBindUser = "svc-vsphere-ad"
 $domainBindPass = "VMware123!"
 
-$wmNamespaceName = "vlc-m01-ns01"
+
 $wmNamespaceEditUserGroup = "gg-kub-admins"
 $wmNamespaceViewUserGroup = "gg-kub-readonly"
 
 $vmClassSmall = "best-effort-small"
 $vmClassMedium = "best-effort-medium"
-$wmClusterName = "lf-tdd-supervisor"
+$wmClusterName = "mgmt-cluster-01"  #vCenter Cluster Name where Supervisor Runs - Not the name of the Supervisor
 
 
 function Show-Menu
