@@ -31,8 +31,7 @@ $tagCategoryName = "vsphere-with-tanzu-category"
 $tagName = "vsphere-with-tanzu-tag"
 $spbmPolicyName = "vsan-tanzu-storage"
 
-# vCenter Content Library Settings
-#$contentLibraryName = "Kubernetes"
+
 
 # vSphere with Tanzu Settings
 $wmClusterInput = @{
