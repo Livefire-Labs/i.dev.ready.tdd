@@ -1,3 +1,11 @@
+# ====================================================================================
+#                    Livefire TDD DevReady 2024                    
+#                                                                                    
+#            Script is to automate the lab for testing
+#              
+#                   by Ben Todd, Livefire Team                    
+# ====================================================================================
+
 # SDDC Manager Credentials
 $sddcManagerFqdn = "sddc-manager.vcf.sddc.lab"
 $sddcManagerUser = "administrator@vsphere.local"
@@ -109,42 +117,32 @@ do
      {
            '1' {
                 cls
-                Write-Host "Building Tags, Storage Policy"
-                # Create Datastore Tag Category and Tag Name, then apply to vSAN Datastore
-                logger "Create the Datastore Tag"
+                Write-Host "Create Datastore Tag Category and Tag Name, then apply to vSAN Datastore"
                 Set-DatastoreTag -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -TagName $tagName -TagCategoryName $tagCategoryName
                 
-                # Create new vSAN Storage Policy for Tanzu associated with Storage Tag
-                logger "Create the Tanzu Storage Policy"
+               Write-Host "Create new vSAN Storage Policy for Tanzu associated with Storage Tag"
                 Add-StoragePolicy -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -PolicyName $spbmPolicyName -TagName $tagName
            } '2' {
                 cls
-                Write-Host "Enabling Supervisor"
-                # Deploy Tanzu Supervisor Control Plane
-                # logger "Deploy the Tanzu Supervisor Cluster"
+                Write-Host "Deploy Tanzu Supervisor Control Plane"
                 # Enable-SupervisorCluster @wmClusterInput 
            } '3' {
                 cls
                 Write-Host "Create Tanzu Supervisor Control Plane Certificate"
-                # logger "Replace the default certificate with a signed one for the Enterprise CA"
                 # New-SupervisorClusterCSR -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -cluster $wmClusterName -CommonName $CommonName -Organization $Organization -OrganizationalUnit $OrganizationalUnit -Country $Country -StateOrProvince $StateOrProvince -Locality $Locality -AdminEmailAddress $AdminEmailAddress -KeySize $Keysize -FilePath ".\SupervisorCluster.csr"
                 # Request-SignedCertificate -mscaComputerName $mscaComputerName -mscaName $mscaName -domainUsername $caUser -domainPassword $caUserPass -certificateTemplate $certificateTemplate -certificateRequestFile ".\SupervisorCluster.csr" -certificateFile ".\SupervisorCluster.cer"
                 # Install-SupervisorClusterCertificate -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Cluster $wmClusterName -filePath ".\SupervisorCluster.cer"
 
-                # # Assign the Tanzu License Key
-                # logger "Assign the Tanzu License Key"
+                Write-Host "Assign the Tanzu License Key"
                 # Add-SupervisorClusterLicense -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -cluster $wmClusterName -LicenseKey $licenseKey
            } '4' {
                 cls
-                Write-Host "Create and Configure Namespace"
-                # # Create a Namespace and set the permissions
-                # logger "Create a default namespace in the Supervisor Cluster"
+                Write-Host "Create a Namespace and set the permissions"
                 # Add-Namespace -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -Cluster $wmClusterName -Namespace $wmNamespaceName -StoragePolicy $spbmPolicyName
                 # Add-NamespacePermission -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -sddcDomain $sddcDomainName -domain $domainFqdn -domainBindUser $domainBindUser -domainBindPass $domainBindPass -namespace $wmNamespaceName -principal $wmNamespaceEditUserGroup -role edit -type group
                 # Add-NamespacePermission -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -sddcDomain $sddcDomainName -domain $domainFqdn -domainBindUser $domainBindUser -domainBindPass $domainBindPass -namespace $wmNamespaceName -principal $wmNamespaceViewUserGroup -role view -type group
                 
-                # # Add TKGS Cluster Class to Namespace
-                # # logger "Assign the gaurenteed small tanzu class to the namespace"1
+                Write-Host "Add TKGS Cluster Class to Namespace"
                 # Add-NamespaceVmClass -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Namespace $wmNamespaceName -VMClass $vmClassSmall
                 # Add-NamespaceVmClass -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Namespace $wmNamespaceName -VMClass $vmClassMedium
 
