@@ -104,8 +104,8 @@ function Show-Menu
      Write-Host “================ $Title ================”
     
      Write-Host “1: Press '1' to create tags and storage policy.”
-     Write-Host “2: Press '2' to deploy Supervisor Cluster.”
-     Write-Host “3: Press '3' To add Certificate top Supervisor.”
+     Write-Host “ DO NOT USE FOR NOW - 2: Press '2' to deploy Supervisor Cluster.”
+     Write-Host “ DO NOT USE FOR NOW - No Reason..? 3: Press '3' To add Certificate top Supervisor.”
      Write-Host “4: Press '4' to Create and Configure Namespace.”
      Write-Host “5: Press '5' to Deploy Supervisor Services.”
      Write-Host “Q: Press 'Q' to quit.”
