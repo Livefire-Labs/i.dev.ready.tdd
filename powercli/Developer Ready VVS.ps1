@@ -144,8 +144,13 @@ Add-StoragePolicy -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcMan
 #Add-ContentLibrary -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -ContentLibraryName $contentLibraryName -SubscriptionUrl "https://wp-content.vmware.com/v2/latest/lib.json"
 
 # Deploy Tanzu Supervisor Control Plane
+<<<<<<< HEAD
 # logger "Deploy the Tanzu Supervisor Cluster"
 # Enable-SupervisorCluster @wmClusterInput 
+=======
+#logger "Deploy the Tanzu Supervisor Cluster"
+#Enable-SupervisorCluster @wmClusterInput 
+>>>>>>> f89e45e5831375ba8644363111ecfea5a6b88251
 
 # # Create Tanzu Supervisor Control Plane Certificate
 # logger "Replace the default certificate with a signed one for the Enterprise CA"
