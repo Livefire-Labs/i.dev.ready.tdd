@@ -1,0 +1,33 @@
+apiVersion: run.tanzu.vmware.com/v1alpha3
+kind: TanzuKubernetesCluster
+metadata:
+  name: tkg-cluster-lf001
+  namespace: lf-tdd-namespace
+  labels:
+    tkg-cluster-selector: tkg-cluster-lf001
+  annotations:
+    run.tanzu.vmware.com/resolve-os-image: os-name=photon
+spec:
+  settings:
+    storage:
+      classes:
+        - vsan-tanzu-storage
+      defaultClass: vsan-tanzu-storage
+  topology:
+    controlPlane:
+      replicas: 1
+      vmClass: best-effort-small
+      storageClass: vsan-tanzu-storage
+      tkr:
+        reference:
+          name: v1.29.4---vmware.3-fips.1-tkg.1
+    nodePools:
+      - name: tkg-cluster-nodepool-11g4
+        replicas: 3
+        vmClass: best-effort-small
+        storageClass: vsan-tanzu-storage
+        labels:
+          use: lf-tdd
+        tkr:
+          reference:
+            name: v1.29.4---vmware.3-fips.1-tkg.1
