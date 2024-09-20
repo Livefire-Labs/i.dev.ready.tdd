@@ -153,12 +153,12 @@ do
 
 
                 cls
-               #  Write-Host "Add a Contour Supervisor Service to Supervisor"
-               #  Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\contour.yml -configureYaml ..\contour-data-values.yml
-               #  Write-Host "Add a External DNS Supervisor Service to Supervisor"
-               #  Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\external-dns.yml -configureYaml ..\external-dns-data-values.yml
-               #  Write-Host "Add a Harbor Supervisor Service to Supervisor"
-               #  Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\harbor.yml -configureYaml ..\harbor-data-values.yml
+                Write-Host "Add a Contour Supervisor Service to Supervisor"
+                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\contour.yml -configureYaml ..\contour-data-values.yml
+                Write-Host "Add a External DNS Supervisor Service to Supervisor"
+                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\external-dns.yml -configureYaml ..\external-dns-data-values.yml
+                Write-Host "Add a Harbor Supervisor Service to Supervisor"
+                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\harbor.yml -configureYaml ..\harbor-data-values.yml
                 Write-Host "Add a CCI Supervisor Service to Supervisor"
                 Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\cci-supervisor-service.yml -configureYaml ..\cci-supervisor-service-empty.yml
 
