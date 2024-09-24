@@ -127,7 +127,7 @@ do
            } '2' {
                 cls
                 Write-Host "Deploy Tanzu Supervisor Control Plane"
-                # Enable-SupervisorCluster @wmClusterInput 
+                Enable-SupervisorCluster @wmClusterInput 
            } '3' {
                 cls
                 Write-Host "Create Tanzu Supervisor Control Plane Certificate"
