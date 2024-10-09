@@ -94,79 +94,24 @@ $vmClassSmall = "best-effort-small"
 $vmClassMedium = "best-effort-medium"
 $wmClusterName = "mgmt-cluster-01"  #vCenter Cluster Name where Supervisor Runs - Not the name of the Supervisor
 
+Write-Host "Remove Namespace:" $wmNamespaceName
+Undo-Namespace  -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -Namespace $wmNamespaceName
 
-function Show-Menu
-{
-     param (
-           [string]$Title = 'LF DEV READY DEPLOYMENT'
-     )
-     cls
-     Write-Host “================ $Title ================”
-    
-     Write-Host “1: Press '1' to create tags and storage policy.”
-     Write-Host “2: Press '2' to deploy Supervisor Cluster.” # DO NOT USE FOR NOW - 
-     # Write-Host “3: Press '3' To add Certificate top Supervisor.” # DO NOT USE FOR NOW - No Reason..? 
-     Write-Host “4: Press '4' to Create and Configure Namespace.”
-     Write-Host “5: Press '5' to Deploy Supervisor Services.”
-     Write-Host “Q: Press 'Q' to quit.”
-}
+Write-Host "Remove Contour Supervisor Service from Supervisor"
+# Undo-SupervisorService [-server] <String> [-user] <String> [-pass] <String> [-sddcDomain] <String> [-cluster] <String> [[-registerYaml] <String>] [<CommonParameters>]
+Undo-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName -registerYaml ..\contour.yml 
 
-do
-{
-     Show-Menu
-     $input = Read-Host “Please make a selection”
-     switch ($input)
-     {
-           '1' {
-                cls
-                Write-Host "Create Datastore Tag Category and Tag Name, then apply to vSAN Datastore"
-                Set-DatastoreTag -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -TagName $tagName -TagCategoryName $tagCategoryName
-                
-               Write-Host "Create new vSAN Storage Policy for Tanzu associated with Storage Tag"
-                Add-StoragePolicy -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -PolicyName $spbmPolicyName -TagName $tagName
-           } '2' {
-                cls
-                Write-Host "Deploy Tanzu Supervisor Control Plane"
-                Enable-SupervisorCluster @wmClusterInput 
-           } '3' {
-                cls
-                Write-Host "Create Tanzu Supervisor Control Plane Certificate"
-                # New-SupervisorClusterCSR -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -cluster $wmClusterName -CommonName $CommonName -Organization $Organization -OrganizationalUnit $OrganizationalUnit -Country $Country -StateOrProvince $StateOrProvince -Locality $Locality -AdminEmailAddress $AdminEmailAddress -KeySize $Keysize -FilePath ".\SupervisorCluster.csr"
-                # Request-SignedCertificate -mscaComputerName $mscaComputerName -mscaName $mscaName -domainUsername $caUser -domainPassword $caUserPass -certificateTemplate $certificateTemplate -certificateRequestFile ".\SupervisorCluster.csr" -certificateFile ".\SupervisorCluster.cer"
-                # Install-SupervisorClusterCertificate -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Cluster $wmClusterName -filePath ".\SupervisorCluster.cer"
+Write-Host "Remove External DNS Supervisor Service from Supervisor"
+# Undo-SupervisorService [-server] <String> [-user] <String> [-pass] <String> [-sddcDomain] <String> [-cluster] <String> [[-registerYaml] <String>] [<CommonParameters>]
+Undo-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\external-dns.yml 
 
-                Write-Host "Assign the Tanzu License Key"
-                # Add-SupervisorClusterLicense -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -cluster $wmClusterName -LicenseKey $licenseKey
-           } '4' {
-                cls
-                Write-Host "Create a Namespace and set the permissions"
-                Add-Namespace -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -Cluster $wmClusterName -Namespace $wmNamespaceName -StoragePolicy $spbmPolicyName
-                Add-NamespacePermission -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -sddcDomain $sddcDomainName -domain $domainFqdn -domainBindUser $domainBindUser -domainBindPass $domainBindPass -namespace $wmNamespaceName -principal $wmNamespaceEditUserGroup -role edit -type group
-                Add-NamespacePermission -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -sddcDomain $sddcDomainName -domain $domainFqdn -domainBindUser $domainBindUser -domainBindPass $domainBindPass -namespace $wmNamespaceName -principal $wmNamespaceViewUserGroup -role view -type group
-                
-                Write-Host "Add TKGS Cluster Class to Namespace"
-                Add-NamespaceVmClass -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Namespace $wmNamespaceName -VMClass $vmClassSmall
-                Add-NamespaceVmClass -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Namespace $wmNamespaceName -VMClass $vmClassMedium
+Write-Host "Remove Harbor Supervisor Service from Supervisor"
+# Undo-SupervisorService [-server] <String> [-user] <String> [-pass] <String> [-sddcDomain] <String> [-cluster] <String> [[-registerYaml] <String>] [<CommonParameters>]
+Undo-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\harbor.yml 
 
-           } '5' {
+Write-Host "Remove CCI Supervisor Service from Supervisor"
+# Undo-SupervisorService [-server] <String> [-user] <String> [-pass] <String> [-sddcDomain] <String> [-cluster] <String> [[-registerYaml] <String>] [<CommonParameters>]
+Undo-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\cci-supervisor-service.yml 
 
-
-                cls
-                Write-Host "Add a Contour Supervisor Service to Supervisor"
-                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\contour.yml -configureYaml ..\contour-data-values.yml
-                Write-Host "Add a External DNS Supervisor Service to Supervisor"
-                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\external-dns.yml -configureYaml ..\external-dns-data-values.yml
-                Write-Host "Add a Harbor Supervisor Service to Supervisor"
-                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\harbor.yml -configureYaml ..\harbor-data-values.yml
-                Write-Host "Add a CCI Supervisor Service to Supervisor"
-                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\cci-supervisor-service.yml -configureYaml ..\cci-supervisor-service-empty.yml
-
-
-
-              } 'q' {
-                return
-           }
-     }
-     pause
-}
-until ($input -eq 'q')
+Write-Host "Remove CCI Supervisor Service from Supervisor"
+Undo-SupervisorCluster  -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  
