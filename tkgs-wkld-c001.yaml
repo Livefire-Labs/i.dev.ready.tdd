@@ -1,0 +1,51 @@
+# ====================================================================================
+#                    Livefire TDD DevReady 2024                    
+#                                                                                    
+#            You must have enabled your Supervisor in vSphere 
+#              in order to provision this TKG workload cluster
+#                                                                                    
+#                   by Konstantin Nikolov, Livefire Team                    
+# ====================================================================================
+
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: tkg-cluster-c001
+  namespace: lf-tdd-namespace
+  labels:
+    tkg-cluster-selector: tkg-cluster-c001
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+        - 192.168.156.0/20
+    services:
+      cidrBlocks:
+        - 10.96.0.0/12
+    serviceDomain: cluster.local
+  topology:
+    class: tanzukubernetescluster
+    version: v1.29.4---vmware.3-fips.1-tkg.1
+    variables:
+      - name: storageClasses
+        value:
+          - vsan-tanzu-storage
+      - name: defaultStorageClass
+        value: vsan-tanzu-storage
+      - name: vmClass
+        value: best-effort-small
+      - name: storageClass
+        value: vsan-tanzu-storage
+    controlPlane:
+      replicas: 1
+      metadata:
+        annotations:
+          run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
+    workers:
+      machineDeployments:
+        - class: node-pool
+          name: tkg-cluster-nodepool-c001
+          replicas: 1
+          metadata:
+            annotations:
+              run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
