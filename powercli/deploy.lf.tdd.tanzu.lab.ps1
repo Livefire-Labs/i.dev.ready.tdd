@@ -95,7 +95,7 @@ $vmClassMedium = "best-effort-medium"
 $wmClusterName = "mgmt-cluster-01"  #vCenter Cluster Name where Supervisor Runs - Not the name of the Supervisor
 
 $primaryZoneName = "vcf.holo.lab" 
-$dynamicUpdate = "Secure" 
+$dynamicUpdate = "NonsecureAndSecure" 
 
 function Show-Menu
 {
