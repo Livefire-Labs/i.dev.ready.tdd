@@ -1,1 +1,1 @@
-Install-Module -Name PowerValidatedSolutions -RequiredVersion 2.10.2.1001
+Install-Module -Name PowerValidatedSolutions -RequiredVersion 2.12.0.1050
