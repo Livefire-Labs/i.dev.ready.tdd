@@ -94,6 +94,8 @@ $vmClassSmall = "best-effort-small"
 $vmClassMedium = "best-effort-medium"
 $wmClusterName = "mgmt-cluster-01"  #vCenter Cluster Name where Supervisor Runs - Not the name of the Supervisor
 
+$primaryZoneName = "vcf.holo.lab" 
+$dynamicUpdate = "Secure" 
 
 function Show-Menu
 {
@@ -147,6 +149,9 @@ do
                 Write-Host "Add TKGS Cluster Class to Namespace"
                 Add-NamespaceVmClass -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Namespace $wmNamespaceName -VMClass $vmClassSmall
                 Add-NamespaceVmClass -server $sddcManagerFqdn -user $sddcManagerUser -pass $sddcManagerPass -domain $sddcDomainName -Namespace $wmNamespaceName -VMClass $vmClassMedium
+
+		Write-Host "Change Security on Primary Zone" $primaryZoneName "to" $dynamicUpdate
+		Set-DnsServerPrimaryZone -Name $primaryZoneName -DynamicUpdate $dynamicUpdate -PassThru
 
            } '5' {
 
