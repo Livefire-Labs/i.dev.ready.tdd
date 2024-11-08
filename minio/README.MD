@@ -48,15 +48,44 @@ Select Manage Service
 
 ![alt text](images/manage.configure.png)
 
+Select your Superviser
 
+Click NEXT
 
 ![alt text](images/manage.review.png)
 
+No Values file for Minio
 
+Click FINISH
+
+![alt text](images/plugin.deployed.png)
+
+Wait for the Minio Plugin task to fiish
 
 ![alt text](images/minio.plugin.general.png)
 
-
+In Workload management slect the Supervisor --> Configure --> Minio --> General to confirm that the Service is up and you can get to the vCenter plugin
 
 ![alt text](images/minio.plugin.tenant.png)
 
+![alt text](images/create.tenant.name.tenant.png)
+
+![alt text](images/create.tenant.tenant.size.png)
+
+![alt text](images/create.tenant.preview.configuration.png)
+
+![alt text](images/create.tenant.credetials.png)
+
+![alt text](images/minio.tenant.details.1.png)
+
+![alt text](images/minio.tenant.details.2.png)
+
+![alt text](images/minio.tenant.details.3.png)
+
+![alt text](images/minio.tenant.details.2.png)
+
+![alt text](images/creds.json.file.png)
+
+![alt text](images/object.store.login.1.png)
+
+![alt text](images/object.store.ui.png)
