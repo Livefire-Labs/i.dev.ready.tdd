@@ -2,10 +2,13 @@
 
 [![MinIO](./images/minio.logo.svg)]()
 
+---
+
 ![alt text](images/shot1.png)
 
 From the Berger Menu Select Workload Management
 
+---
 ![alt text](images/workload.mangement.png)
 
 In Workload Management Select Services
