@@ -104,29 +104,36 @@ Click **FINISH**
 ---
 ![alt text](images/minio.tenant.details.1.png)
 
+Select the new Tenant click **DETAILS**
 
 ---
 ![alt text](images/minio.tenant.details.2.png)
 
+Click **HEALTH**
 
 ---
 ![alt text](images/minio.tenant.details.3.png)
 
+Once the Tenant is up and Running click back to **DETAILS**
 
 ---
 ![alt text](images/minio.tenant.details.2.png)
 
+Click the **Console Endpoint URL**
 
 ---
 ![alt text](images/creds.json.file.png)
 
+Find the crentials.json file you downloaded earlier
+
+For Login into the Console "access_key" = **UserID** and "secret_key" = **Password**
 
 ---
 ![alt text](images/object.store.login.1.png)
 
+**Login**
 
 ---
 ![alt text](images/object.store.ui.png)
 
-
-
+You are ready to administer the tenant.
