@@ -1,6 +1,6 @@
 # MinIO Quickstart Guide - vSphere 8 Supervisor Service
 
-[![MinIO](./images/minio.logo.svg)](http://github.com)
+[![MinIO](./images/minio.logo.svg)]()
 
 ---
 
