@@ -39,6 +39,7 @@ $wmClusterInput = @{
 	user = "administrator@vsphere.local"
 	pass = 'VMware123!VMware123!'
 	domain = "mgmt-domain"
+     supervisorName = "lf-tdd-supervisor"
 	cluster = "mgmt-cluster-01"
 	sizeHint = "small"
 	managementVirtualNetwork = "sddc-vds01-vmmgmt"
@@ -165,8 +166,8 @@ do
                 Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\harbor.yml -configureYaml ..\harbor-data-values.yml
                 Write-Host "Add a CCI Supervisor Service to Supervisor"
                 Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\cci-supervisor-service.yml -configureYaml ..\cci-supervisor-service-empty.yml
-                Write-Host "Add a Minio Supervisor Service to Supervisor"
-                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\minio-service-definition-v2.0.10-3.yaml -configureYaml ..\minio-supervisor-service-empty.yml
+                #Write-Host "Add a Minio Supervisor Service to Supervisor"
+                #Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\minio-service-definition-v2.0.10-3.yaml -configureYaml ..\minio-supervisor-service-empty.yml
 
 
               } 'q' {
