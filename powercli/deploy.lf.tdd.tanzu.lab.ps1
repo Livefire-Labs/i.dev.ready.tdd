@@ -159,15 +159,15 @@ do
 
                 cls
                 Write-Host "Add a Contour Supervisor Service to Supervisor"
-                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\contour.yml -configureYaml ..\contour-data-values.yml
+                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\service.yaml\contour.yml -configureYaml ..\service.yaml\contour-data-values.yml
                 Write-Host "Add a External DNS Supervisor Service to Supervisor"
-                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\external-dns.yml -configureYaml ..\external-dns-data-values.yml
+                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\service.yaml\external-dns.yml -configureYaml ..\service.yaml\external-dns-data-values.yml
                 Write-Host "Add a Harbor Supervisor Service to Supervisor"
-                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\harbor.yml -configureYaml ..\harbor-data-values.yml
+                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\service.yaml\harbor.yml -configureYaml ..\service.yaml\harbor-data-values.yml
                 Write-Host "Add a CCI Supervisor Service to Supervisor"
-                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\cci-supervisor-service.yml -configureYaml ..\cci-supervisor-service-empty.yml
+                Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\service.yaml\cci-supervisor-service.yml -configureYaml ..\service.yaml\cci-supervisor-service-empty.yml
                 #Write-Host "Add a Minio Supervisor Service to Supervisor"
-                #Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\minio-service-definition-v2.0.10-3.yaml -configureYaml ..\minio-supervisor-service-empty.yml
+                #Add-SupervisorService -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -sddcDomain $sddcDomainName -Cluster $wmClusterName  -registerYaml ..\service.yaml\minio-service-definition-v2.0.10-3.yaml -configureYaml ..\service.yaml\minio-supervisor-service-empty.yml
 
 
               } 'q' {
