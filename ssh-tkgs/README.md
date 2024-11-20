@@ -106,11 +106,11 @@ Give it a minute or two, and try again, until you succeed.
 
 and so on
 
-13. When done, log out from the SSH session in youexpor jumpbox
+13. When done, log out from the SSH session in your jumpbox
 
 ***exit***
 
-14. Delete the jumpbox pod if not needed anymore
+14. Delete the jumpbox pod if/when not needed anymore
 
 ***kubectl delete pod jumpbox***
 
