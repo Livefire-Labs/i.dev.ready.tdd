@@ -1,5 +1,5 @@
 
-SSH to a TKG cluster node as the ***vmware-system-user*** using a private key:
+***SSH to a TKG cluster node as the ***vmware-system-user*** using a private key***
 
 You can connect through SSH to any TKG cluster node as the ***vmware-system-user user*** 
 
