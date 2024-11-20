@@ -60,7 +60,7 @@ Note: You should also see the jumpbox pod under your Namespace in Inventory (vCe
 
 7. Get the name and Ip address of the virtual machine ( acting as a Master Node of your target TKG cluster)
 
-![alt text](images07.png)
+![alt text](images/07.png)
 
 ***kubectl get virtualmachines -o wide***
 
@@ -83,13 +83,13 @@ Give it a minute or two, and try again, until you succeed.
 
 10. Get root privileges as necessary
 
-![alt text](images10.png)
+![alt text](images/10.png)
 
 ***sudo su***
  
 11. Enable kubectl commands against kube-apiserver
 
-![alt text](images11.png)
+![alt text](images/11.png)
 
 ***export KUBECONFIG=/etc/kubernetes/admin.conf***
 
