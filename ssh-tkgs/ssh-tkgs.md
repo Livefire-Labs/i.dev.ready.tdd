@@ -5,7 +5,7 @@ You can connect through SSH to any TKG cluster node as the ***vmware-system-user
 
 The secret that contains the SSH private key is named ***cluster-name-ssh***
 
-To connect to a TKG cluster node over SSH using a private key, you can create a jump box vSphere Pod on Supervisor.
+To connect to a TKG cluster node over SSH using a private key, you can create a jumpbox as a vSphere Pod on Supervisor.
 
 Note: With this guide you provision a vSphere Pod as a jump host for SSH connectivity. 
 vSphere Pods require NSX networking for Supervisor. 
