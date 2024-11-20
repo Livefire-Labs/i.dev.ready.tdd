@@ -43,7 +43,7 @@ Note: The photon image is being pulled from DockerHub, you might want to pull it
 ![alt text](images/04.png)
 
 
-5. Create a jumbox as a vSphere Pod, using the jumbox.yaml . Verify the pod is running
+5. Create a jumbox as a vSphere Pod, using the jumbox.yaml 
 
 ![alt text](images/05.png)
 
