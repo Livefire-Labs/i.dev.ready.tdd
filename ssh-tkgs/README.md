@@ -36,7 +36,7 @@ Guidance:
 ***kubectl get secrets***
 
 
-4. Modify the ***jumpbox.yaml*** specification. Make sure replacing with your exact values your Namespace and TKG cluster nanme ( see the ***#REPLACE*** comments)
+4. Modify the ***jumpbox.yaml*** specification. Make sure replacing with your exact values your ***Namespace*** and ***TKG cluster name*** ( see the ***#REPLACE*** comments)
 
 Note: The photon image is being pulled from DockerHub, you might want to pull it from another registry
 
