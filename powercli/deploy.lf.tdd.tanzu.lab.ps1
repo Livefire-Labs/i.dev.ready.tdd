@@ -11,9 +11,6 @@ $sddcManagerFqdn = "sddc-manager.vcf.sddc.lab"
 $sddcManagerUser = "administrator@vsphere.local"
 $sddcManagerPass = "VMware123!VMware123!"
 
-# vCenter Credentials
-$vcentermgmt = "vcenter-mgmt.vcf.sddc.lab"
-
 # MGMT Workload domain and NSX Edge Cluster / NSX Segment Settings
 $sddcDomainName = "mgmt-domain"
 $tanzuSegmentName = "vlc-m01-seg01-tanzu"
@@ -129,16 +126,7 @@ do
                 Set-DatastoreTag -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -TagName $tagName -TagCategoryName $tagCategoryName
                 
                Write-Host "Create new vSAN Storage Policy for Tanzu associated with Storage Tag"
-               Connect-VIServer -Server $vcentermgmt -User $sddcManagerUser -Password $sddcManagerPass
-               New-SpbmStoragePolicy -Name $spbmPolicyName -Description "vSphere Supervisor Policy" `
-                                        -AnyOfRuleSets `
-                                        (New-SpbmRuleSet `
-                                             (New-SpbmRule -Capability (Get-SpbmCapability -Name "VSAN.hostFailuresToTolerate" ) -Value 1),`
-                                             (New-SpbmRule -Capability (Get-SpbmCapability -Name "VSAN.replicaPreference" ) -Value "RAID-5/6 (Erasure Coding) - Capacity"),`
-                                             (New-SpbmRule -Capability (Get-SpbmCapability -Name "VSAN.storageType" ) -Value "Allflash"),`
-                                             (New-SpbmRule -AnyOfTags $tagName)`
-                                        )
-
+                Add-StoragePolicy -Server $sddcManagerFqdn -User $sddcManagerUser -Pass $sddcManagerPass -Domain $sddcDomainName -PolicyName $spbmPolicyName -TagName $tagName
            } '2' {
                 cls
                 Write-Host "Deploy Tanzu Supervisor Control Plane"
